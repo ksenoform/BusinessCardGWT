@@ -39,7 +39,7 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
     public void correctLinesWithStars(List<String> listToCorrect) {
         char[] starsList = new char[longestWordInSentence + 4];
         Arrays.fill(starsList, '*');
-        listToCorrect.set(0, starsList.toString());
+        listToCorrect.set(0, String.valueOf(starsList));
         listToCorrect.set(listToCorrect.size() - 1, String.valueOf(starsList));
     }
 }
