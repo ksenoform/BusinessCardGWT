@@ -43,6 +43,15 @@ public class TextManipulatorImplTest {
     }
 
     @Test
+    public void checkIfTheNumbersOfStarsInFirstLineIsEqualsToLettersInWorldPlus4() {
+        sentenceToCheck = "ab";
+        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+
+        String oneLine = result.get(0);
+        Assert.assertEquals(sentenceToCheck.length() + 4, oneLine.length());
+    }
+
+    @Test
     public void checkIfTheLastLineIsFilledOnlyByStars() {
         List<String> result = manipulator.afterManipulate(sentenceToCheck);
 
@@ -51,6 +60,16 @@ public class TextManipulatorImplTest {
         oneLine = oneLine.replaceAll("\\*","");
         Assert.assertTrue(oneLine.isEmpty());
     }
+
+    @Test
+    public void checkIfTheNumbersOfStarsInLastLineIsEqualsToLettersInWorldPlus4() {
+        sentenceToCheck = "ab";
+        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+
+        String oneLine = result.get(result.size() - 1);
+        Assert.assertEquals(sentenceToCheck.length() + 4, oneLine.length());
+    }
+
 
     private String prepareSentence(String[] wordsToSentence) {
         StringBuilder builder = new StringBuilder();
