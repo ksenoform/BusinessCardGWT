@@ -16,10 +16,14 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
         String[] afterSplit = text.split("\\s");
         List<String> sList = new ArrayList<String>();
 
+        sList.add("*");
+
         for (String s : afterSplit) {
             sList.add(s);
         }
 
+        sList.add("*");
+        
         return sList;
     }
 }

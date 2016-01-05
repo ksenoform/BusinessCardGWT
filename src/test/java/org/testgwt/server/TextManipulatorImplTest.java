@@ -25,7 +25,7 @@ public class TextManipulatorImplTest {
         List<String> result = manipulator.afterManipulate(sentenceToCheck);
 
         for (int i = 0; i < wordsToSentence.length; i++) {
-            String wordInResult = result.get(i);
+            String wordInResult = result.get(i+1);
             String wordToCheck = wordsToSentence[i];
 
             Assert.assertEquals(wordInResult, wordToCheck);
