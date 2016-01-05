@@ -1,6 +1,7 @@
 package org.testgwt.server;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,14 +11,18 @@ import java.util.List;
  */
 public class TextManipulatorImplTest {
     private String[] wordsToSentence = {"one", "two", "three"};
+    private TextManipulatorImpl manipulator;
+    private String sentenceToCheck;
+
+    @Before
+    public void Setup() {
+        manipulator = new TextManipulatorImpl();
+        sentenceToCheck = prepareSentence(wordsToSentence);
+    }
 
     @Test
     public void shouldReturnListOfAllWordsInSentence() throws Exception {
-        TextManipulatorImpl manipulator = new TextManipulatorImpl();
-        String sentenceToCheck = prepareSentence(wordsToSentence);
-
-        List<String> result;
-        result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck);
 
         for (int i = 0; i < wordsToSentence.length; i++) {
             String wordInResult = result.get(i);
@@ -25,6 +30,26 @@ public class TextManipulatorImplTest {
 
             Assert.assertEquals(wordInResult, wordToCheck);
         }
+    }
+
+    @Test
+    public void checkIfTheFirstLineIsFilledOnlyByStars() {
+        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+
+        String oneLine = result.get(0);
+        Assert.assertTrue(oneLine.contains("*"));
+        oneLine = oneLine.replaceAll("\\*","");
+        Assert.assertTrue(oneLine.isEmpty());
+    }
+
+    @Test
+    public void checkIfTheLastLineIsFilledOnlyByStars() {
+        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+
+        String oneLine = result.get(result.size() - 1);
+        Assert.assertTrue(oneLine.contains("*"));
+        oneLine = oneLine.replaceAll("\\*","");
+        Assert.assertTrue(oneLine.isEmpty());
     }
 
     private String prepareSentence(String[] wordsToSentence) {
