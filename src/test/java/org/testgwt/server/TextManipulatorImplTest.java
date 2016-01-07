@@ -87,7 +87,30 @@ public class TextManipulatorImplTest {
             Assert.assertEquals(wordsToSentence[i].length(), secondPart.length());
             Assert.assertTrue(secondPart.matches(wordsToSentence[i]));
         }
+    }
 
+    @Test
+    public void checkIfTheTextPositionIsRight() {
+        String textPosition = "right";
+        int leftAndRightMargine = 2;
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
+        String oneLine = result.get(0);
+        int lineLength = oneLine.length();
+
+        for (int i=0; i<result.size() - 2; i++) {
+            oneLine = result.get(i+1);
+            int lengthOfExpectedWord = wordsToSentence[1].length();
+            int lengthOfFirstPart = lineLength
+                    - leftAndRightMargine
+                    - lengthOfExpectedWord;
+            String firstPart = oneLine.substring(0, lengthOfFirstPart);
+            String secondPart = oneLine.substring(lengthOfFirstPart, lengthOfExpectedWord + leftAndRightMargine);
+
+            Assert.assertEquals(lengthOfFirstPart, firstPart.length());
+            Assert.assertTrue(firstPart.matches("^\\s+$"));
+            Assert.assertEquals(lengthOfExpectedWord, secondPart.length());
+            Assert.assertTrue(secondPart.matches(wordsToSentence[i]));
+        }
     }
 
     private String prepareSentence(String[] wordsToSentence) {
