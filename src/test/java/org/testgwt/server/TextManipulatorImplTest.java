@@ -13,6 +13,7 @@ public class TextManipulatorImplTest {
     private String[] wordsToSentence = {"one", "two", "three"};
     private TextManipulatorImpl manipulator;
     private String sentenceToCheck;
+    private String textPosition = "right";
 
     @Before
     public void Setup() {
@@ -22,7 +23,7 @@ public class TextManipulatorImplTest {
 
     @Test
     public void shouldReturnListOfAllWordsInSentence() throws Exception {
-        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
 
         for (int i = 0; i < wordsToSentence.length; i++) {
             String wordInResult = result.get(i+1);
@@ -34,7 +35,7 @@ public class TextManipulatorImplTest {
 
     @Test
     public void checkIfTheFirstLineIsFilledOnlyByStars() {
-        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
 
         String oneLine = result.get(0);
         Assert.assertTrue(oneLine.contains("*"));
@@ -45,7 +46,7 @@ public class TextManipulatorImplTest {
     @Test
     public void checkIfTheNumbersOfStarsInFirstLineIsEqualsToLettersInWorldPlus4() {
         sentenceToCheck = "ab";
-        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
 
         String oneLine = result.get(0);
         Assert.assertEquals(sentenceToCheck.length() + 4, oneLine.length());
@@ -53,7 +54,7 @@ public class TextManipulatorImplTest {
 
     @Test
     public void checkIfTheLastLineIsFilledOnlyByStars() {
-        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
 
         String oneLine = result.get(result.size() - 1);
         Assert.assertTrue(oneLine.contains("*"));
@@ -64,7 +65,7 @@ public class TextManipulatorImplTest {
     @Test
     public void checkIfTheNumbersOfStarsInLastLineIsEqualsToLettersInWorldPlus4() {
         sentenceToCheck = "ab";
-        List<String> result = manipulator.afterManipulate(sentenceToCheck);
+        List<String> result = manipulator.afterManipulate(sentenceToCheck, textPosition);
 
         String oneLine = result.get(result.size() - 1);
         Assert.assertEquals(sentenceToCheck.length() + 4, oneLine.length());

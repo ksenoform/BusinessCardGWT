@@ -40,6 +40,7 @@ public class SomeTextToShow extends Composite{
     }
 
     public void sendTextToManipulate(String text) {
-        textManipulator.afterManipulate(text);
+        String textPosition = textPositionRadioButtons.getSelectedRadio();
+        textManipulator.afterManipulate(text, textPosition);
     }
 }

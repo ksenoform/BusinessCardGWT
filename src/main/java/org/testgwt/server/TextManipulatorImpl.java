@@ -14,7 +14,7 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
     private Integer longestWordInSentence;
 
     @Override
-    public List<String> afterManipulate(String text) {
+    public List<String> afterManipulate(String text, String textPosition) {
         String[] afterSplit = text.split("\\s");
         List<String> sList = new ArrayList<String>();
         longestWordInSentence = 0;

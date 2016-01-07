@@ -26,8 +26,8 @@ public class TextManipulatorImpl implements TextManipulatorInt {
     }
 
     @Override
-    public void afterManipulate(String text) {
-        server.afterManipulate(text, new CollBack());
+    public void afterManipulate(String text, String textPosition) {
+        server.afterManipulate(text, textPosition, new CollBack());
     }
 
     private class CollBack implements AsyncCallback {

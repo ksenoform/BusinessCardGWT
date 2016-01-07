@@ -7,4 +7,5 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public interface TextPosition {
     VerticalPanel getPanelWithButtons();
+    String getSelectedRadio();
 }

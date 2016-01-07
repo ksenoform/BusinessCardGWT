@@ -10,5 +10,5 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("greet")
 public interface TextManipulator extends RemoteService {
-    List<String> afterManipulate(String text);
+    List<String> afterManipulate(String text, String textPosition);
 }
