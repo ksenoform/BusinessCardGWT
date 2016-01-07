@@ -7,5 +7,4 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public interface IntertText {
     VerticalPanel getTextBoxAndButton();
-    String getSentenceFromTextBox();
 }

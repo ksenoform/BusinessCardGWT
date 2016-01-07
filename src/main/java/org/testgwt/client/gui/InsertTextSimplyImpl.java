@@ -40,9 +40,4 @@ public class InsertTextSimplyImpl implements IntertText {
     public VerticalPanel getTextBoxAndButton() {
         return vPanelMain;
     }
-
-    @Override
-    public String getSentenceFromTextBox() {
-        return null;
-    }
 }
