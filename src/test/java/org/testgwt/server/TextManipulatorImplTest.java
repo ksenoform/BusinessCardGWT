@@ -13,7 +13,7 @@ public class TextManipulatorImplTest {
     private String[] wordsToSentence = {"one", "two", "three"};
     private TextManipulatorImpl manipulator;
     private String sentenceToCheck;
-    private String textPosition = "right";
+    private String textPosition = "left";
 
     @Before
     public void Setup() {
@@ -27,7 +27,7 @@ public class TextManipulatorImplTest {
 
         for (int i = 0; i < wordsToSentence.length; i++) {
             String wordInResult = result.get(i+1);
-            String wordToCheck = wordsToSentence[i];
+            String wordToCheck = "  " + wordsToSentence[i];
 
             Assert.assertEquals(wordInResult, wordToCheck);
         }
@@ -99,12 +99,13 @@ public class TextManipulatorImplTest {
 
         for (int i=0; i<result.size() - 2; i++) {
             oneLine = result.get(i+1);
-            int lengthOfExpectedWord = wordsToSentence[1].length();
+            int lengthOfExpectedWord = wordsToSentence[i].length();
             int lengthOfFirstPart = lineLength
                     - leftAndRightMargine
                     - lengthOfExpectedWord;
+
             String firstPart = oneLine.substring(0, lengthOfFirstPart);
-            String secondPart = oneLine.substring(lengthOfFirstPart, lengthOfExpectedWord + leftAndRightMargine);
+            String secondPart = oneLine.substring(lengthOfFirstPart, lengthOfExpectedWord + lengthOfFirstPart);
 
             Assert.assertEquals(lengthOfFirstPart, firstPart.length());
             Assert.assertTrue(firstPart.matches("^\\s+$"));
