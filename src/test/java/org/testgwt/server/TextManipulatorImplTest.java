@@ -85,7 +85,6 @@ public class TextManipulatorImplTest {
             Assert.assertEquals(leftAndRightMargine, firstPart.length());
             Assert.assertTrue(firstPart.matches("^\\s+$"));
             Assert.assertEquals(wordsToSentence[i].length(), secondPart.length());
-            System.out.println(secondPart);
             Assert.assertTrue(secondPart.matches(wordsToSentence[i]));
         }
 
