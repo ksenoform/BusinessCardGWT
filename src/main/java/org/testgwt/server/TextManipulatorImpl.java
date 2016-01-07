@@ -25,6 +25,7 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
             if (longestWordInSentence < s.length()) {
                 longestWordInSentence = s.length();
             }
+
             sList.add(s);
         }
 
