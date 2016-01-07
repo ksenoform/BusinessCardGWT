@@ -3,9 +3,8 @@ package org.testgwt.client.services;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-import org.testgwt.client.gui.SomeTestToShow;
+import org.testgwt.client.gui.SomeTextToShow;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,17 +12,17 @@ import java.util.List;
  */
 public class TextManipulatorImpl implements TextManipulatorInt {
     TextManipulatorAsync server;
-    private SomeTestToShow someTestToShow;
+    private SomeTextToShow someTextToShow;
 
     public TextManipulatorImpl(String url) {
         server = GWT.create(TextManipulator.class);
         ServiceDefTarget entrypoint = (ServiceDefTarget) server;
         entrypoint.setServiceEntryPoint(url);
-        someTestToShow = new SomeTestToShow(this);
+        someTextToShow = new SomeTextToShow(this);
     }
 
-    public SomeTestToShow getSomeTestToShow() {
-        return someTestToShow;
+    public SomeTextToShow getSomeTextToShow() {
+        return someTextToShow;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class TextManipulatorImpl implements TextManipulatorInt {
         public void onSuccess(Object o) {
             if (o instanceof List<?>) {
                 List<String> text = (List<String>) o;
-                someTestToShow.updateLabel(text);
+                someTextToShow.updateLabel(text);
             }
         }
     }
