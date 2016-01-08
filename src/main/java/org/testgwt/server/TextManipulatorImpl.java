@@ -34,37 +34,9 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
         correctLinesWithStars(sList);
 
         if ("right".equals(textPosition)) {
-            for (int i=1; i<sList.size() - 2; i++) {
-                StringBuilder moveToRight = new StringBuilder();
-                String oneWord = sList.get(i);
-                int chowManySpaces = longestWordInSentence - oneWord.length();
-                chowManySpaces += 2;
-
-                char[] spaceList = new char[chowManySpaces];
-                Arrays.fill(spaceList, ' ');
-
-                moveToRight.append(spaceList);
-                moveToRight.append(oneWord);
-
-                sList.set(i, moveToRight.toString());
-            }
+            moveTextToRight(sList);
         } else if ("center".equals(textPosition)) {
-            for (int i=1; i<sList.size() - 2; i++) {
-                StringBuilder moveToRight = new StringBuilder();
-                String oneWord = sList.get(i);
-                int middleOfLine = (int) Math.ceil(longestWordInSentence / 2.0);
-                int middleOfWord = (int) Math.ceil(oneWord.length() / 2.0);
-                int chowManySpaces = middleOfLine - middleOfWord;
-                chowManySpaces += 1;
-
-                char[] spaceList = new char[chowManySpaces];
-                Arrays.fill(spaceList, ' ');
-
-                moveToRight.append(spaceList);
-                moveToRight.append(oneWord);
-
-                sList.set(i, moveToRight.toString());
-            }
+            moveTextToCenter(sList);
         }
 
         return sList;
@@ -76,5 +48,41 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
         Arrays.fill(starsList, '*');
         listToCorrect.set(0, String.valueOf(starsList));
         listToCorrect.set(listToCorrect.size() - 1, String.valueOf(starsList));
+    }
+
+    private void moveTextToRight(List<String> listToCorrect) {
+        for (int i=1; i<listToCorrect.size() - 2; i++) {
+            StringBuilder moveToRight = new StringBuilder();
+            String oneWord = listToCorrect.get(i);
+            int chowManySpaces = longestWordInSentence - oneWord.length();
+            chowManySpaces += 2;
+
+            char[] spaceList = new char[chowManySpaces];
+            Arrays.fill(spaceList, ' ');
+
+            moveToRight.append(spaceList);
+            moveToRight.append(oneWord);
+
+            listToCorrect.set(i, moveToRight.toString());
+        }
+    }
+
+    private void moveTextToCenter(List<String> listToCorrect) {
+        for (int i=1; i<listToCorrect.size() - 2; i++) {
+            StringBuilder moveToRight = new StringBuilder();
+            String oneWord = listToCorrect.get(i);
+            int middleOfLine = (int) Math.ceil(longestWordInSentence / 2.0);
+            int middleOfWord = (int) Math.ceil(oneWord.length() / 2.0);
+            int chowManySpaces = middleOfLine - middleOfWord;
+            chowManySpaces += 1;
+
+            char[] spaceList = new char[chowManySpaces];
+            Arrays.fill(spaceList, ' ');
+
+            moveToRight.append(spaceList);
+            moveToRight.append(oneWord);
+
+            listToCorrect.set(i, moveToRight.toString());
+        }
     }
 }
