@@ -48,6 +48,23 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
 
                 sList.set(i, moveToRight.toString());
             }
+        } else if ("center".equals(textPosition)) {
+            for (int i=1; i<sList.size() - 2; i++) {
+                StringBuilder moveToRight = new StringBuilder();
+                String oneWord = sList.get(i);
+                int middleOfLine = (int) Math.ceil(longestWordInSentence / 2.0);
+                int middleOfWord = (int) Math.ceil(oneWord.length() / 2.0);
+                int chowManySpaces = middleOfLine - middleOfWord;
+                chowManySpaces += 1;
+
+                char[] spaceList = new char[chowManySpaces];
+                Arrays.fill(spaceList, ' ');
+
+                moveToRight.append(spaceList);
+                moveToRight.append(oneWord);
+
+                sList.set(i, moveToRight.toString());
+            }
         }
 
         return sList;
