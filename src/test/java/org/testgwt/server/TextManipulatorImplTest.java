@@ -105,7 +105,7 @@ public class TextManipulatorImplTest {
                     - lengthOfExpectedWord;
 
             String firstPart = oneLine.substring(0, lengthOfFirstPart);
-            String secondPart = oneLine.substring(lengthOfFirstPart, lengthOfExpectedWord + leftAndRightMargin);
+            String secondPart = oneLine.substring(lengthOfFirstPart, oneLine.length());
 
             Assert.assertEquals(lengthOfFirstPart, firstPart.length());
             Assert.assertTrue(firstPart.matches("^\\s+$"));
