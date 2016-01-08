@@ -124,12 +124,13 @@ public class TextManipulatorImplTest {
 
         for (int i=0; i<result.size() - 2; i++) {
             oneLine = result.get(i+1);
-            int lengthOfExpectedWord = wordsToSentence[1].length();
+            int lengthOfExpectedWord = wordsToSentence[i].length();
             int theCenterInWord = (int) Math.ceil(lengthOfExpectedWord / 2.0);
             int lengthOfFirstPart = theCenterInLine
                     - theCenterInWord;
+
             String firstPart = oneLine.substring(0, lengthOfFirstPart);
-            String secondPart = oneLine.substring(lengthOfFirstPart, lengthOfExpectedWord + lengthOfFirstPart - 1);
+            String secondPart = oneLine.substring(lengthOfFirstPart, oneLine.length());
 
             Assert.assertEquals(lengthOfFirstPart, firstPart.length());
             Assert.assertTrue(firstPart.matches("^\\s+$"));
