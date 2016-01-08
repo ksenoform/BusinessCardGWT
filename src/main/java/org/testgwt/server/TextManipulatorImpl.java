@@ -33,6 +33,23 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
 
         correctLinesWithStars(sList);
 
+        if ("right".equals(textPosition)) {
+            for (int i=1; i<sList.size() - 2; i++) {
+                StringBuilder moveToRight = new StringBuilder();
+                String oneWord = sList.get(i);
+                int chowManySpaces = longestWordInSentence - oneWord.length();
+                chowManySpaces += 2;
+
+                char[] spaceList = new char[chowManySpaces];
+                Arrays.fill(spaceList, ' ');
+
+                moveToRight.append(spaceList);
+                moveToRight.append(oneWord);
+
+                sList.set(i, moveToRight.toString());
+            }
+        }
+
         return sList;
     }
 
