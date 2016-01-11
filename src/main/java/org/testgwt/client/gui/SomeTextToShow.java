@@ -35,7 +35,10 @@ public class SomeTextToShow extends Composite{
 
         for (String s : text) {
             int row = flexTable.getRowCount();
-            flexTable.setText(row, 0, s);
+            for (int i=0; i<s.length(); i++) {
+                char oneCharacterInString = s.charAt(i);
+                flexTable.setText(row, i, String.valueOf(oneCharacterInString));
+            }
         }
     }
 
