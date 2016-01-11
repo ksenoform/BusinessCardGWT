@@ -11,7 +11,7 @@ import java.util.List;
  * Created by RSzczygielski on 2016-01-04.
  */
 public class TextManipulatorImpl implements TextManipulatorInt {
-    TextManipulatorAsync server;
+    private TextManipulatorAsync server;
     private SomeTextToShow someTextToShow;
 
     public TextManipulatorImpl(String url) {
