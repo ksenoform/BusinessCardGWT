@@ -51,7 +51,7 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
     }
 
     private void moveTextToRight(List<String> listToCorrect) {
-        for (int i=1; i<listToCorrect.size() - 2; i++) {
+        for (int i=1; i<listToCorrect.size() - 1; i++) {
             StringBuilder moveToRight = new StringBuilder();
             String oneWord = listToCorrect.get(i);
             int chowManySpaces = longestWordInSentence - oneWord.length();
@@ -68,7 +68,7 @@ public class TextManipulatorImpl extends RemoteServiceServlet implements TextMan
     }
 
     private void moveTextToCenter(List<String> listToCorrect) {
-        for (int i=1; i<listToCorrect.size() - 2; i++) {
+        for (int i=1; i<listToCorrect.size() - 1; i++) {
             StringBuilder moveToRight = new StringBuilder();
             String oneWord = listToCorrect.get(i);
             int middleOfLine = (int) Math.ceil(longestWordInSentence / 2.0);
